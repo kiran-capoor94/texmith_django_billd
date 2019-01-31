@@ -1,4 +1,4 @@
-# texmith_django_billd
+# Django Billd by Texmith Technologies
 
 Simple Django Billing and Invoice App with Django.
 
