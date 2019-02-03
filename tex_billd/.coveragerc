@@ -1,0 +1,5 @@
+[run]
+include = tex_billd/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
