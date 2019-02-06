@@ -40,6 +40,7 @@ Werkzeug = "*"
 Sphinx = "*"
 factory_boy = "*"
 django_coverage_plugin = "*"
+django-summernote = "*"
 
 [requires]
 python_version = "3.7"
