@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'djmoney',
 ]
 LOCAL_APPS = [
     'tex_billd.users.apps.UsersAppConfig',

@@ -17,6 +17,8 @@ django-compressor # https://github.com/django-compressor/django-compressor
 django-redis  # https://github.com/niwinz/django-redis
 django-summernote
 django-jet
+django-mptt
+django-money #https://github.com/django-money/django-money
 
 # Django REST Framework
 djangorestframework  # https://github.com/encode/django-rest-framework
