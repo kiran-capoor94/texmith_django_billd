@@ -5,6 +5,9 @@ from django.contrib import admin
 from django.views import defaults as default_views
 
 urlpatterns = [
+    path('summernote/', include('django_summernote.urls')),
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path("pages/", include('tex_billd.pages.urls')),
 
     # Django Admin, use {% url 'admin:index' %}

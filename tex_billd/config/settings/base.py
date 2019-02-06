@@ -52,6 +52,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -69,6 +71,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework',
     'djmoney',
+    'django_summernote'
 ]
 LOCAL_APPS = [
     'tex_billd.users.apps.UsersAppConfig',
