@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7e6aff3b778653ee74f986d35a685f7c1b0ba7cba6cd168ea7b85ebd19d9618c"
+            "sha256": "83a6f8dd3e207d9eb37111831f3383fa8fab6082d4270fc9e9f88ea8a441786f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -60,6 +60,13 @@
                 "sha256:ca4be454458f9dec299268d472aaa5a11f67a4ff70093396e1ceae9c76cf4bbb"
             ],
             "version": "==18.2.0"
+        },
+        "autopep8": {
+            "hashes": [
+                "sha256:33d2b5325b7e1afb4240814fe982eea3a92ebea712869bfd08b3c0393404248c"
+            ],
+            "index": "pypi",
+            "version": "==1.4.3"
         },
         "babel": {
             "hashes": [
@@ -299,11 +306,20 @@
             "index": "pypi",
             "version": "==3.1.2"
         },
+        "django-money": {
+            "hashes": [
+                "sha256:11f090cfbfffabd136a307b4990a2170d3a3604ccb3bdf7ede70bbe6afc001c3",
+                "sha256:2056aa03d7a2d4e4788c34ee697d54396fb7c80115e2ea3eb3f7234a5a7307f7"
+            ],
+            "index": "pypi",
+            "version": "==0.14.4"
+        },
         "django-mptt": {
             "hashes": [
                 "sha256:18a41d1b56ca7c02a5b04d246e33ee2d18f6ee5459c02ed1d945f5abdef23a2e",
                 "sha256:689a04cce0981671d6061a9928c33a16b47abb0d4cd43cf7dec31ae284fdae9d"
             ],
+            "index": "pypi",
             "version": "==0.9.1"
         },
         "django-polymorphic": {
@@ -514,10 +530,10 @@
         },
         "parso": {
             "hashes": [
-                "sha256:4b8f9ed80c3a4a3191aa3261505d868aa552dd25649cb13a7d73b6b7315edf2d",
-                "sha256:5a120be2e8863993b597f1c0437efca799e90e0793c98ae5d4e34ebd00140e31"
+                "sha256:6ecf7244be8e7283ec9009c72d074830e7e0e611c974f813d76db0390a4e0dd6",
+                "sha256:8162be7570ffb34ec0b8d215d7f3b6c5fab24f51eb3886d6dee362de96b6db94"
             ],
-            "version": "==0.3.2"
+            "version": "==0.3.3"
         },
         "pickleshare": {
             "hashes": [
@@ -619,6 +635,13 @@
                 "sha256:e76826342cefe3c3d5f7e8ee4316b80d1dd8a300781612ddbc765c17ba25a6c6"
             ],
             "version": "==1.7.0"
+        },
+        "py-moneyed": {
+            "hashes": [
+                "sha256:c6691b914a5e4b5b2335cf113620479a52cc82988c0e143435a7c5c7d60cd4ad",
+                "sha256:ec73795171919d537880a33c44d07fcdf0a5225e8368684fe02f0e75a6404742"
+            ],
+            "version": "==0.8.0"
         },
         "pycodestyle": {
             "hashes": [

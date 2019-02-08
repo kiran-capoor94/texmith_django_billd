@@ -11,7 +11,7 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["timestamp"] = timezone.now()
+        context["published_at"] = timezone.now()
         return context
 
 

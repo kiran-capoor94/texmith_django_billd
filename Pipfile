@@ -41,6 +41,9 @@ Sphinx = "*"
 factory_boy = "*"
 django_coverage_plugin = "*"
 django-summernote = "*"
+django-mptt = "*"
+django-money = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,7 +1,7 @@
 pytz  # https://github.com/stub42/pytz
 python-slugify  # https://github.com/un33k/python-slugify
 Pillow  # https://github.com/python-pillow/Pillow
-rcssmin  # https://github.com/ndparker/rcssmin
+rcssmin --install-option="--without-c-extensions"
 argon2-cffi # https://github.com/hynek/argon2_cffi
 whitenoise  # https://github.com/evansd/whitenoise
 redis # pyup: < 3 # https://github.com/antirez/redis
