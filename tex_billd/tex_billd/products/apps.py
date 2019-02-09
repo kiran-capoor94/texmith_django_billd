@@ -7,4 +7,7 @@ class ProductsAppConfig(AppConfig):
     verbose_name = "Products"
 
     def ready(self):
-        pass
+        try:
+            import users.signals  # noqa F401
+        except ImportError:
+            pass
