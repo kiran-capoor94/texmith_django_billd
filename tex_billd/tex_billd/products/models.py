@@ -24,9 +24,34 @@ User = settings.AUTH_USER_MODEL
 MIN_STOCK = settings.MINIMUM_STOCK
 
 
+class ProductQuerySet(models.QuerySet):
+    def all(self):
+        """
+        Call all data from the model ``Product``
+        """
+        return self.get_queryset()
+
+    def available(self):
+        """
+        Filter out all 'Not Available' Products from
+        ``all()`` function.
+        """
+        return self.all().filter(status='available')
+
+    def get_by_id(self):
+        """
+        Filter available products by ID.
+        """
+        qs = self.available().filter(id=id)
+        if qs.count() == 1:
+            return qs.first()
+        return None
+        # TODO: Raise Error.
+
+
 class ProductManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(status='published')
+        return ProductQuerySet(self.model, using=self._db)
 
 
 class Product(models.Model):
@@ -41,7 +66,7 @@ class Product(models.Model):
     many types and variants he wants, they won't be searchable or filterable etc.
     """
     # TODO: Add Product Type & Product Variant Feature in the App.
-    STATUS = Choices(('draft', _('draft')), ('published', _('published')))
+    STATUS = Choices(('notavail', _('Not Available')), ('available', _('Available')))
     name = models.CharField(_("Product Name"), max_length=150)
     price = MoneyField(max_digits=19, decimal_places=4, default_currency='INR', verbose_name=_('Price'))
     product_type = models.CharField(_("Product Type"), max_length=150, default='None')
@@ -49,14 +74,23 @@ class Product(models.Model):
     updated = models.DateTimeField(_("Date Last Edited"), auto_now=False, auto_now_add=True)
     user = models.ForeignKey(User, verbose_name=_("Manager Name"), on_delete=models.CASCADE)
     description = models.TextField(_("Product Description"), blank=True)
+    company_name = models.CharField(_("Company Name"), max_length=50)
+    serial_number = models.PositiveIntegerField(_("Product Serial Number"))
     status = StatusField()
     status_changed = MonitorField(monitor='status')
-    published_at = MonitorField(monitor='status', when=['published'])
+    available_at = MonitorField(monitor='status', when=['available'])
+    slug = models.SlugField(_("URL Slug for Product"))
 
-    # product_image =
-
-    # tax_rate =
-    # stock =
+    # Stock Variables
+    """
+    Stock Management is done by using the availabe_stock variable.
+    Logic is if there are 10 BMW M3 GTRs in the inventory. After every
+    purchase made the inventory/stock shall be reduced by the number of items sold.
+    This logic is implemented in the views.py of the Products Component.
+    """
+    available_stock = models.PositiveIntegerField(_("Stock Available"))  # Available Stock
+    current_stock = models.PositiveIntegerField(_("Current Stock"))
+    stock_changed = MonitorField(monitor='available', verbose_name=_('Last Changed At'))
 
     objects = models.Manager()
 
@@ -68,49 +102,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse("products:detail", kwargs={"pk": self.pk})
+    def is_available(self):
+        """
+        Check if the product is available.
+        """
+        if self.available_stock >= 1:
+            self.status = 'available'
+            return self.status
 
-
-class StockQuerySet(models.QuerySet):
-    def available(self):
-        return self.filter(available=True)
-
-
-class StockManager(models.Manager):
-    def get_queryset(self):
-        return StockQuerySet(self.model, using=self._db)
-
-    def all(self):
-        return self.get_queryset().available()
-
-    def get_by_id(self):
-        qs = self.get_queryset().filter(id=id)
-        if qs.count() == 1:
-            return qs.first()
-        return None
-        # TODO: Raise Error.
-
-    # def available_stock_by_id(self):
-    #     return self.get_by_id().filter()
-
-
-class Stock(models.Model):
-    product = models.ForeignKey(Product, verbose_name=_("Stock For Product"), on_delete=models.CASCADE)
-    available = models.BooleanField(_("Available or Not"), default=True)
-    available_stock = models.PositiveIntegerField(_("Stock Available"))
-    sold = models.PositiveIntegerField(_("Stock Sold"))
-    stock_changed = MonitorField(monitor='available')
-    made_available_at = MonitorField(monitor='available', when=True)
-
-    objects = StockManager()
-
-    class Meta:
-        verbose_name = _("Stock")
-        verbose_name_plural = _("Stocks")
-
-    def __str__(self):
-        return self.name
-
-    # def get_absolute_url(self):
-    #     return reverse("Stock_detail", kwargs={"pk": self.pk})
+# TODO: Add Elastic Search of Google Search
+# TODO: Add post_save Signal to check the stock and change the product from available to not available.
