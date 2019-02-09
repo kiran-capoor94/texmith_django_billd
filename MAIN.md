@@ -21,13 +21,16 @@ Billd uses a client/server Model Approach to the architechture.
    10. Product Mangement
        1.  Product Type CRUD.
        2.  Product Variant CRUD.
-       3.  Stock CRUD
    11. History
    12. Payment Gateway
    13. App Instance - Heroku
    14. Static Storages - Heroku(Whitenoise)
    15. Advertisement Management for SuperAdmin
    16. Analytics
+   17. Inventory Mangement
+       1.  Location Based Inventory Tracking
+       2.  Stock CRUD
+       3.  Availabilty auto check
 
 ### Expected Result
 
@@ -38,7 +41,7 @@ Simple Django based Billing & Invoice on the Cloud with Multi Tenancy to enable 
 1. PostgreSQL 11.1+
 2. Django 2.1.5+
 3. Jinja 2+
-4. NgninX
+4. NginX
 5. uWSGI
 6. Django Debug Toolbar
 7. Django Compressor
