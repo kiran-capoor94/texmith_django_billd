@@ -37,10 +37,10 @@ USE_TZ = True
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {
-    'default': env.db('DATABASE_URL'),
-}
-DATABASES['default']['ATOMIC_REQUESTS'] = True
+# DATABASES = {
+#     'default': env.db('DATABASE_URL'),
+# }
+
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -71,11 +71,13 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework',
     'djmoney',
-    'django_summernote'
+    'django_summernote',
+    'django_extensions',
 ]
 LOCAL_APPS = [
     'tex_billd.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'tex_billd.pages',
     'tex_billd.products.apps.ProductsAppConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
