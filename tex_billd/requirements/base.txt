@@ -19,6 +19,7 @@ django-summernote
 django-jet
 django-mptt
 django-money #https://github.com/django-money/django-money
+django-extensions  # https://github.com/django-extensions/django-extensions
 
 # Django REST Framework
 djangorestframework  # https://github.com/encode/django-rest-framework
